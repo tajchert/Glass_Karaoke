@@ -14,17 +14,28 @@
      limitations under the License.
 -->
 
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black" >
+    
     <TextView
         android:id="@+id/seconds_view"
-        android:layout_width="match_parent"
+        android:layout_width="130dp"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_marginTop="-10px"
+        android:layout_alignParentRight="true"
         android:textSize="160px"
         android:gravity="center" />
-</FrameLayout>
+
+    <ImageView
+        android:id="@+id/cover_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@+id/seconds_view"
+         android:layout_gravity="left"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:src="@drawable/cover_rick_astley_album" />
+
+</RelativeLayout>

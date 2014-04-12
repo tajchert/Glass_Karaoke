@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package com.google.android.glass.sample.stopwatch;
+package com.tajchert.glassware.karaoke;
+
+import java.util.concurrent.TimeUnit;
 
 import android.content.Context;
 import android.os.Handler;
@@ -23,9 +25,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-
-import java.lang.Long;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Animated countdown going from {@code mTimeSeconds} to 0.

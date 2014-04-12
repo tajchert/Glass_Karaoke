@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.android.glass.sample.stopwatch;
+package com.tajchert.glassware.karaoke;
 
 import com.google.android.glass.timeline.LiveCard;
 import com.google.android.glass.timeline.LiveCard.PublishMode;
@@ -29,7 +29,7 @@ import android.util.Log;
 /**
  * Service owning the LiveCard living in the timeline.
  */
-public class StopwatchService extends Service {
+public class KaraokeService extends Service {
 
     private static final String TAG = "StopwatchService";
     private static final String LIVE_CARD_TAG = "stopwatch";

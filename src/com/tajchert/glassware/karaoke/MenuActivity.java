@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.android.glass.sample.stopwatch;
+package com.tajchert.glassware.karaoke;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -42,7 +42,7 @@ public class MenuActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.stopwatch, menu);
+        inflater.inflate(R.menu.mainlyrics, menu);
         return true;
     }
 
@@ -51,7 +51,7 @@ public class MenuActivity extends Activity {
         // Handle item selection.
         switch (item.getItemId()) {
             case R.id.stop:
-                stopService(new Intent(this, StopwatchService.class));
+                stopService(new Intent(this, KaraokeService.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

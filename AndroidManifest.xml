@@ -15,7 +15,7 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.google.android.glass.sample.stopwatch"
+    package="com.tajchert.glassware.karaoke"
     android:versionCode="2"
     android:versionName="1.0" >
 
@@ -29,14 +29,14 @@
         android:label="@string/app_name" >
 
         <activity
-            android:name="com.google.android.glass.sample.stopwatch.MenuActivity"
+            android:name="com.tajchert.glassware.karaoke.MenuActivity"
             android:label="@string/app_name"
             android:theme="@style/MenuTheme"
             android:enabled="true" >
         </activity>
 
         <service
-            android:name="com.google.android.glass.sample.stopwatch.StopwatchService"
+            android:name="com.tajchert.glassware.karaoke.KaraokeService"
             android:icon="@drawable/ic_lap"
             android:label="@string/app_name"
             android:enabled="true"

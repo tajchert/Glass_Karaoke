@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package com.google.android.glass.sample.stopwatch;
+package com.tajchert.glassware.karaoke;
+
+import java.util.concurrent.TimeUnit;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -22,11 +24,8 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.SystemClock;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.View;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * SurfaceHolder.Callback used to draw the chronometer on the timeline LiveCard.
@@ -44,7 +43,7 @@ public class ChronometerDrawer implements SurfaceHolder.Callback {
     private final int mCountDownSoundId;
 
     private final CountDownView mCountDownView;
-    private final ChronometerView mChronometerView;
+    private final LyricsView mLyricsPlayer;
 
     private long mCurrentTimeSeconds;
     private boolean mCountDownSoundPlayed;
@@ -66,9 +65,10 @@ public class ChronometerDrawer implements SurfaceHolder.Callback {
             @Override
             public void onFinish() {
                 mCountDownDone = true;
-                mChronometerView.setBaseMillis(SystemClock.elapsedRealtime());
+                mLyricsPlayer.setBaseMillis(SystemClock.elapsedRealtime());
+                mLyricsPlayer.setSong(InitSongs.initRick());
                 if (mHolder != null) {
-                    mChronometerView.start();
+                    mLyricsPlayer.start();
                 }
                 playSound(mStartSoundId);
             }
@@ -89,15 +89,15 @@ public class ChronometerDrawer implements SurfaceHolder.Callback {
             }
         });
 
-        mChronometerView = new ChronometerView(context);
-        mChronometerView.setListener(new ChronometerView.ChangeListener() {
+        mLyricsPlayer = new LyricsView(context);
+        mLyricsPlayer.setListener(new LyricsView.ChangeListener() {
 
             @Override
             public void onChange() {
-                draw(mChronometerView);
+                draw(mLyricsPlayer);
             }
         });
-        mChronometerView.setForceStart(true);
+        mLyricsPlayer.setForceStart(true);
 
         mSoundPool = new SoundPool(MAX_STREAMS, AudioManager.STREAM_MUSIC, 0);
         mStartSoundId = mSoundPool.load(context, R.raw.start, SOUND_PRIORITY);
@@ -114,9 +114,9 @@ public class ChronometerDrawer implements SurfaceHolder.Callback {
         mCountDownView.layout(
                 0, 0, mCountDownView.getMeasuredWidth(), mCountDownView.getMeasuredHeight());
 
-        mChronometerView.measure(measuredWidth, measuredHeight);
-        mChronometerView.layout(
-                0, 0, mChronometerView.getMeasuredWidth(), mChronometerView.getMeasuredHeight());
+        mLyricsPlayer.measure(measuredWidth, measuredHeight);
+        mLyricsPlayer.layout(
+                0, 0, mLyricsPlayer.getMeasuredWidth(), mLyricsPlayer.getMeasuredHeight());
     }
 
     @Override
@@ -124,7 +124,7 @@ public class ChronometerDrawer implements SurfaceHolder.Callback {
         Log.d(TAG, "Surface created");
         mHolder = holder;
         if (mCountDownDone) {
-            mChronometerView.start();
+            mLyricsPlayer.start();
         } else {
             mCountDownView.start();
         }
@@ -133,7 +133,7 @@ public class ChronometerDrawer implements SurfaceHolder.Callback {
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
         Log.d(TAG, "Surface destroyed");
-        mChronometerView.stop();
+        mLyricsPlayer.stop();
         mHolder = null;
     }
 
