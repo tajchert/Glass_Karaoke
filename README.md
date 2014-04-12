@@ -1,23 +1,22 @@
-Stopwatch
+Glass Karaoke
 =========
 
-This sample inserts a live card to the left of the Glass clock that displays a
-stopwatch. Tapping the live card presents a menu with one option:
+It is a slight modification of a stopwatch (from the samples), to make it show lyrics for karaoke.
+You can add more songs in InitSongs class with their lyrics and time that they should appear on a screen.
 
-- Stop: remove the stopwatch from the timeline
+If you want to try it, test lyrics are for that video - https://www.youtube.com/watch?v=M4H8zXwVbVE 
 
-## Getting started
 
-Check out our documentation to learn how to get started on
-https://developers.google.com/glass/develop/gdk
+#####Below few screens to show how it looks:
 
-## Running the sample on Glass
+Count down screen (3 sec. to get you prepareted for singing).
+![Countdown](https://raw.githubusercontent.com/tajchert/Glass_Karaoke/master/screenshots/countdown.jpg "Countdown")
 
-You can use your IDE to compile and install the sample or use
-[`adb`](https://developer.android.com/tools/help/adb.html)
-on the command line:
+Title of song to sing (and author).
+![Title](https://raw.githubusercontent.com/tajchert/Glass_Karaoke/master/screenshots/title.jpg "Title")
 
-    $ adb install -r StopwatchSample.apk
+Menu, no changes here.
+![Stopmenu](https://raw.githubusercontent.com/tajchert/Glass_Karaoke/master/screenshots/stopmenu.jpg "Stopmenu")
 
-To start the sample, say "ok glass, start a stopwatch" from the Glass clock
-screen or use the touch menu.
+Lyrics line, nothing fancy here as well.
+![Line](https://raw.githubusercontent.com/tajchert/Glass_Karaoke/master/screenshots/line.jpg "Line")
