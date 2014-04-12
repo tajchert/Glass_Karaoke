@@ -10,13 +10,17 @@ If you want to try it, test lyrics are for that video - https://www.youtube.com/
 #####Below few screens to show how it looks:
 
 Count down screen (3 sec. to get you prepareted for singing).
+
 ![Countdown](https://raw.githubusercontent.com/tajchert/Glass_Karaoke/master/screenshots/countdown.jpg "Countdown")
 
 Title of song to sing (and author).
+
 ![Title](https://raw.githubusercontent.com/tajchert/Glass_Karaoke/master/screenshots/title.jpg "Title")
 
 Menu, no changes here.
+
 ![Stopmenu](https://raw.githubusercontent.com/tajchert/Glass_Karaoke/master/screenshots/stopmenu.jpg "Stopmenu")
 
 Lyrics line, nothing fancy here as well.
+
 ![Line](https://raw.githubusercontent.com/tajchert/Glass_Karaoke/master/screenshots/line.jpg "Line")
