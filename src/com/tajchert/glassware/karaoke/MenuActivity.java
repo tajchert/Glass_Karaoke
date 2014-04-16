@@ -19,6 +19,7 @@ package com.tajchert.glassware.karaoke;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,15 +28,13 @@ import android.view.MenuItem;
  * Activity showing the options menu.
  */
 public class MenuActivity extends Activity {
+	
+	private final Handler mHandler = new Handler();
+	
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
         openOptionsMenu();
     }
 
@@ -48,10 +47,15 @@ public class MenuActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection.
         switch (item.getItemId()) {
             case R.id.stop:
-                stopService(new Intent(this, KaraokeService.class));
+                //stopService(new Intent(this, KaraokeService.class));
+            	post(new Runnable() {
+                    @Override
+                    public void run() {
+                        stopService(new Intent(MenuActivity.this, KaraokeService.class));
+                    }
+                });
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -63,4 +67,8 @@ public class MenuActivity extends Activity {
         // Nothing else to do, closing the Activity.
         finish();
     }
+    protected void post(Runnable runnable) {
+        mHandler.post(runnable);
+    }
+    
 }

@@ -16,15 +16,14 @@
 
 package com.tajchert.glassware.karaoke;
 
-import com.google.android.glass.timeline.LiveCard;
-import com.google.android.glass.timeline.LiveCard.PublishMode;
-import com.google.android.glass.timeline.TimelineManager;
-
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.util.Log;
+
+import com.google.android.glass.timeline.LiveCard;
+import com.google.android.glass.timeline.LiveCard.PublishMode;
 
 /**
  * Service owning the LiveCard living in the timeline.
@@ -36,13 +35,11 @@ public class KaraokeService extends Service {
 
     private ChronometerDrawer mCallback;
 
-    private TimelineManager mTimelineManager;
     private LiveCard mLiveCard;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        mTimelineManager = TimelineManager.from(this);
     }
 
     @Override
@@ -54,7 +51,7 @@ public class KaraokeService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (mLiveCard == null) {
             Log.d(TAG, "Publishing LiveCard");
-            mLiveCard = mTimelineManager.createLiveCard(LIVE_CARD_TAG);
+            mLiveCard = new LiveCard(this, LIVE_CARD_TAG);
 
             // Keep track of the callback to remove it before unpublishing.
             mCallback = new ChronometerDrawer(this);
@@ -63,11 +60,11 @@ public class KaraokeService extends Service {
             Intent menuIntent = new Intent(this, MenuActivity.class);
             menuIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             mLiveCard.setAction(PendingIntent.getActivity(this, 0, menuIntent, 0));
-
+            
             mLiveCard.publish(PublishMode.REVEAL);
             Log.d(TAG, "Done publishing LiveCard");
         } else {
-            // TODO(alainv): Jump to the LiveCard when API is available.
+            mLiveCard.navigate();
         }
 
         return START_STICKY;

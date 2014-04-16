@@ -27,9 +27,6 @@ import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.View;
 
-/**
- * SurfaceHolder.Callback used to draw the chronometer on the timeline LiveCard.
- */
 public class ChronometerDrawer implements SurfaceHolder.Callback {
     private static final String TAG = "ChronometerDrawer";
 
@@ -106,7 +103,6 @@ public class ChronometerDrawer implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        // Measure and layout the view with the canvas dimensions.
         int measuredWidth = View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY);
         int measuredHeight = View.MeasureSpec.makeMeasureSpec(height, View.MeasureSpec.EXACTLY);
 
@@ -153,9 +149,6 @@ public class ChronometerDrawer implements SurfaceHolder.Callback {
         }
     }
 
-    /**
-     * Plays the provided {@code soundId}.
-     */
     private void playSound(int soundId) {
         mSoundPool.play(soundId,
                         1 /* leftVolume */,
