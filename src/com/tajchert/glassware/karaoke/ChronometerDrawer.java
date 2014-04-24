@@ -63,7 +63,9 @@ public class ChronometerDrawer implements SurfaceHolder.Callback {
             public void onFinish() {
                 mCountDownDone = true;
                 mLyricsPlayer.setBaseMillis(SystemClock.elapsedRealtime());
-                mLyricsPlayer.setSong(InitSongs.initRick());
+                //mLyricsPlayer.setSong(InitSongs.initRick());
+                mLyricsPlayer.setSong(InitSongs.initWeird());
+                
                 if (mHolder != null) {
                     mLyricsPlayer.start();
                 }
